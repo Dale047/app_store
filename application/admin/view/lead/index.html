@@ -1,0 +1,61 @@
+﻿
+{include file="public/_meta" /}
+</head>
+<body>
+<nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 首页 <span class="c-gray en">&gt;</span> 软件导航 <span class="c-gray en">&gt;</span> 导航类别 <a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" ><i class="Hui-iconfont">&#xe68f;</i></a></nav>
+<div class="page-container">
+	<div class="Huialert Huialert-error"><i class="Hui-iconfont">&#xe6a6;</i>非必要情况下请不要修改导航</div>
+	<table class="table table-border table-bordered table-hover table-bg table-sort">
+		<thead>
+			<tr class="text-c">
+				<th width="30">ID</th>
+				<th width="60">分类</th>
+				<th width="60">状态</th>
+				<th width="90">级别</th>
+				<th width="90">备注</th>
+				<th width="90">创建时间</th>
+				<th width="90">修改时间</th>
+				<th width="60">编辑</th>
+			</tr>
+		</thead>
+		<tbody>
+		{volist name="res" id="vo"}
+			<tr class="text-c">
+				<th>{$i}</th>
+				<th><p class="f-12" align="left">{$vo.title,$vo.level|AppName}</p></th>
+				<th>{$vo.status|LevelStatus}</th>
+				<th>{$vo.level}</th>
+				<th>{$vo.tip}</th>
+				<th>{$vo.create_time}</th>
+				<th>{$vo.update_time}</th>
+				<th width="90">
+					<a href="javascript:;" onclick="member_add('修改导航','{:url('admin/lead/edit',['id'=>$vo.id])}','500','370')" class="btn btn-primary radius size-MINI">
+						<i class="Hui-iconfont">&#xe616;</i> 修改
+					</a>
+					&nbsp;&nbsp;
+					<a href="{:url('admin/lead/del',['id'=>$vo.id])}" class="btn btn-danger radius size-MINI">
+						<i class="Hui-iconfont">&#xe6e2;</i> 删除
+					</a>
+				</th>
+			</tr>
+		{/volist}
+		</tbody>
+	</table>
+</div>
+
+
+{include file="public/_footer" /}
+
+<!--请在下方写此页面业务相关的脚本-->
+<script type="text/javascript" src="__STATIC__/admin/lib/My97DatePicker/4.8/WdatePicker.js"></script>
+<script type="text/javascript" src="__STATIC__/admin/lib/datatables/1.10.0/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="__STATIC__/admin/lib/laypage/1.2/laypage.js"></script>
+
+<script>
+/*用户-添加*/
+function member_add(title,url,w,h){
+layer_show(title,url,w,h);
+}
+</script>
+</body>
+</html>

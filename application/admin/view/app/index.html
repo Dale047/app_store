@@ -1,0 +1,77 @@
+﻿
+{include file="public/_meta" /}
+</head>
+<body>
+<nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 首页 <span class="c-gray en">&gt;</span> 软件管理 <span class="c-gray en">&gt;</span> 软件查看 <a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" ><i class="Hui-iconfont">&#xe68f;</i></a></nav>
+<div class="page-container">
+	<div class="cl pd-5 bg-1 bk-gray mt-20"> <span class="l"> <a href="javascript:;" onclick="member_add('添加软件','{:url('admin/app/add')}','','510')" class="btn btn-primary radius"><i class="Hui-iconfont">&#xe600;</i> 上传软件</a></span> <span class="r">共有数据：<strong>{$countData}</strong> 条</span> </div>
+	<div class="mt-20">
+	<table class="table table-border table-bordered table-hover table-bg table-sort">
+		<thead>
+			<tr class="text-c">
+				<th width="50">ID</th>
+				<th width="200">软件名</th>
+				<th width="100">分类</th>
+				<th width="60">类型</th>
+				<th width="">积分</th>
+				<th width="80">大小 MB</th>
+				<th width="">状态</th>
+				<th width="">上传时间</th>
+				<th width="">最后一次修改时间</th>
+				<th width="70">操作</th>
+			</tr>
+		</thead>
+		<tbody>
+		{volist name="data" id="vo"}
+			<tr class="text-c">
+				<td>{$i}</td>
+				<td>{$vo.title}</td>
+				<td>{$vo.appId|getPNav}</td>
+				<td>{$vo.FileType}</td>
+				<td>{$vo.inte}</td>
+				<td>{$vo.FileSize}</td>
+				<td><a href="{:url('admin/app/reStatus',['id'=>$vo.id,'status'=>$vo.status==1?0:1])}" title="点击修改状态">{$vo.status|LevelStatus}</a></td>
+				<td>{$vo.create_time}</td>
+				<td>{$vo.update_time}</td>
+				<td class="td-manage"><a title="编辑" href="javascript:;" onclick="member_edit('编辑','{:url('admin/app/edit',['id'=>$vo.id])}','4','','510')" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6df;</i></a> <a title="删除" href="{:url('admin/App/delData',['id'=>$vo.id])}" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6e2;</i></a></td>
+			</tr>
+		{/volist}
+		</tbody>
+	</table>
+	</div>
+</div>
+
+
+{include file="public/_footer" /}
+
+<!--请在下方写此页面业务相关的脚本-->
+<script type="text/javascript" src="__STATIC__/admin/lib/My97DatePicker/4.8/WdatePicker.js"></script>
+<script type="text/javascript" src="__STATIC__/admin/lib/datatables/1.10.0/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="__STATIC__/admin/lib/laypage/1.2/laypage.js"></script>
+<script type="text/javascript">
+$(function(){
+	$('.table-sort').dataTable({
+		"aaSorting": [[ 1, "aes" ]],//默认第几个排序
+		"bStateSave": true,//状态保存
+		"aoColumnDefs": [
+		  //{"bVisible": false, "aTargets": [ 3 ]} //控制列的隐藏显示
+		  {"orderable":false,"aTargets":[]}// 制定列不参与排序
+		]
+	});
+	
+});
+/*用户-添加*/
+function member_add(title,url,w,h){
+	layer_show(title,url,w,h);
+}
+/*用户-查看*/
+function member_show(title,url,id,w,h){
+	layer_show(title,url,w,h);
+}
+/*用户-编辑*/
+function member_edit(title,url,id,w,h){
+	layer_show(title,url,w,h);
+}
+</script> 
+</body>
+</html>

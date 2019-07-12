@@ -1,0 +1,53 @@
+
+{include file="public/head" /}
+</head>
+<body>
+
+{include file="public/header" /}
+
+	<div class="register">
+		<div class="container">
+            <h2>新用户注册 <small>欢迎你的加入，即日加入<a style="color: red">*送100积分</a></small></h2>
+            <form action="" method="post">
+                <div class="form-group">
+                    <label>真实姓名：<a style="color: red">*只能是汉字</a></label>
+                    <input type="text" class="form-control" placeholder="请输入您的真实姓名" required="required" name="relname">
+                </div>
+                <div class="form-group">
+                    <label>用户名：<a style="color: red">*只能是字母和数字</a></label>
+                    <input type="text" class="form-control" placeholder="请输入您的用户名，用于登录使用" name="username" required="required">
+                </div>
+                <div class="form-group">
+                    <label>密码：<a style="color: red">*</a></label>
+                    <input type="password" class="form-control" placeholder="请输入您的密码" name="password" required="required">
+                </div>
+                <div class="form-group">
+                    <label>重复密码：<a style="color: red">*</a></label>
+                    <input type="password" class="form-control" placeholder="请再一次输入您的密码" name="passwords" required="required">
+                </div>
+                <div class="form-group">
+                    <label>手机号：<a style="color: red">*</a></label>
+                    <input type="text" class="form-control" placeholder="请输入您的手机号" name="tel" required="required">
+                </div>
+                <div class="form-group">
+                    <label>QQ：<a style="color: red">*</a></label>
+                    <input type="text" class="form-control" placeholder="请输入您的QQ，可能在找回密码时使用" name="qq" required="required">
+                </div>
+                <div class="form-group">
+                    <label>验证码：</label>
+                    <input type="text" class="form-control" placeholder="点击图片更换验证码" name="code"  required="required">
+                    <br />
+                    <img src="{:captcha_src()}" onclick="javascript:this.src='{:captcha_src()}?tm='+Math.random()" />
+                </div>
+                <button type="submit" class="btn btn-success">提交</button>
+                <button type="button" class="btn btn-warning">重置</button>
+            </form>
+        </div>
+	</div>
+
+
+{include file="public/nav" /}
+
+{include file="public/footer" /}
+</body>
+</html>		

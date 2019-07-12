@@ -1,0 +1,20 @@
+
+{include file="public/head" /}
+</head>
+<body>
+
+{include file="public/header" /}
+	<div class="register">
+	  <div class="container">
+	  	  <h2>{$SiteName.0.value} 使用手册</h2>
+		  {volist name="data" id="vo"}
+	  	  <h3>{$vo.question} </h3>
+	  	  <p>{$vo.answer}</p>
+		  {/volist}
+	  	  </div>
+	</div>
+
+	{include file="public/nav" /}
+	{include file="public/footer" /}
+</body>
+</html>		

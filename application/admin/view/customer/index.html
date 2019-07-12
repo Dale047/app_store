@@ -1,0 +1,46 @@
+﻿
+{include file="public/_meta" /}
+</head>
+<body>
+<nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 首页 <span class="c-gray en">&gt;</span> 用户管理 <span class="c-gray en">&gt;</span> 查看用户 <a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" ><i class="Hui-iconfont">&#xe68f;</i></a></nav>
+<div class="page-container">
+	<table class="table table-border table-bordered table-hover table-bg table-sort">
+		<thead>
+			<tr class="text-c">
+				<th width="50">ID</th>
+				<th width="200">用户名</th>
+				<th width="100">真实姓名</th>
+				<th width="60">手机号码</th>
+				<th width="">qq</th>
+				<th width="80">当前积分</th>
+				<th width="">状态</th>
+				<th width="">注册时间</th>
+			</tr>
+			{volist name="data" id="vo"}
+				<tr class="text-c">
+					<th width="50">{$i}</th>
+					<th width="200">{$vo.username}</th>
+					<th width="100">{$vo.relname}</th>
+					<th width="160">{$vo.tel}</th>
+					<th width="">{$vo.qq}</th>
+					<th width="80">{$vo.inte}</th>
+					<th width=""><a href="{:url('admin/customer/Restatus',['id'=>$vo.id,'status'=>$vo.status==1?0:1])}" title="点击修改状态">{$vo.status|LevelStatus}</a></th>
+					<th width="">{$vo.create_time}</th>
+				</tr>
+			{/volist}
+		</thead>
+		<tbody>
+		</tbody>
+	</table>
+	</div>
+</div>
+
+
+{include file="public/_footer" /}
+
+<!--请在下方写此页面业务相关的脚本-->
+<script type="text/javascript" src="__STATIC__/admin/lib/My97DatePicker/4.8/WdatePicker.js"></script>
+<script type="text/javascript" src="__STATIC__/admin/lib/datatables/1.10.0/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="__STATIC__/admin/lib/laypage/1.2/laypage.js"></script>
+</body>
+</html>

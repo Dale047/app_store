@@ -1,0 +1,80 @@
+
+
+{include file="public/_meta" /}
+</head>
+<body>
+<article class="page-container">
+	<form action="" method="post" class="form form-horizontal" id="form-member-add">
+		<div class="row cl">
+			<label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>上传者：</label>
+			<div class="formControls col-xs-8 col-sm-9">
+				<input type="text" class="input-text" value="{$data.0.UpUser}" placeholder="" name="UpUser" readonly="readonly">
+			</div>
+		</div>
+		<div class="row cl">
+			<label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>文件标题：</label>
+			<div class="formControls col-xs-8 col-sm-9">
+				<input type="text" class="input-text" value="{$data.0.title}" placeholder="" name="title">
+			</div>
+		</div>
+		<div class="row cl">
+			<label class="form-label col-xs-4 col-sm-2">原来图标：</label>
+			<div class="formControls col-xs-8 col-sm-9">
+				<img src="{$data.0.icon}" width="150" height="150">
+			</div>
+		</div>
+		<div class="row cl">
+			<label class="form-label col-xs-4 col-sm-2">软件图标：</label>
+			<div class="formControls col-xs-8 col-sm-9">
+				<input id="file_upload"  type="file" multiple="true" >
+				<img style="display: none" id="upload_org_code_img" src="{$data.0.icon}" width="150" height="150">
+				<input id="file_upload_image" name="icon" type="hidden" multiple="true" value="">
+			</div>
+		</div>
+		<div class="row cl">
+			<label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>项目分类：</label>
+			<div class="formControls col-xs-8 col-sm-9">
+				<span class="select-box">
+					  <select class="select" size="1" name="appId">
+						  {volist name="nav" id="vo"}
+							<option value="{$vo.id}" {equal name="{$vo.id}" value="$data.0.appId"}selected>{$vo.title,$vo.level|appName}</option>
+						  {/volist}
+					  </select>
+					</span>
+			</div>
+		</div>
+		<div class="row cl">
+			<label class="form-label col-xs-4 col-sm-3">备注：</label>
+			<div class="formControls col-xs-8 col-sm-9">
+				<textarea name="beizhu" cols="" rows="" class="textarea"  placeholder="说点什么...最少输入10个字符" onKeyUp="$.Huitextarealength(this,100)"></textarea>
+				<p class="textarea-numberbar"><em class="textarea-length">0</em>/100</p>
+			</div>
+		</div>
+		<div class="row cl">
+			<div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-3">
+				<input class="btn btn-primary radius" type="submit" value="&nbsp;&nbsp;更新&nbsp;&nbsp;">
+			</div>
+		</div>
+	</form>
+</article>
+
+{include file="public/_footer" /}
+
+<!--请在下方写此页面业务相关的脚本--> 
+<script type="text/javascript" src="__STATIC__/admin/lib/My97DatePicker/4.8/WdatePicker.js"></script>
+<script type="text/javascript" src="__STATIC__/admin/lib/jquery.validation/1.14.0/jquery.validate.js"></script>
+<script type="text/javascript" src="__STATIC__/admin/lib/jquery.validation/1.14.0/validate-methods.js"></script>
+<script type="text/javascript" src="__STATIC__/admin/lib/jquery.validation/1.14.0/messages_zh.js"></script>
+<!--/请在上方写此页面业务相关的脚本-->
+
+{load href="__STATIC__/admin/uploadify/jquery.uploadify.min.js" /}
+{load href="__STATIC__/admin/js/image.js" /}
+<script>
+    var SCOPE = {
+        'uploadify_swf' : '__STATIC__/admin/uploadify/uploadify.swf',
+        'image_upload' : '{:url('api/image/upload')}',
+    };
+</script>
+
+</body>
+</html>

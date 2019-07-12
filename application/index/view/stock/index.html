@@ -1,0 +1,36 @@
+{include file="public/head" /}
+</head>
+<body>
+	{include file="public/header" /}
+	<div class="stock_box">
+	  <div class="col-md-10 sap_tabs">	
+	       <div id="horizontalTab" style="display: block; width: 100%; margin: 0px;">
+				<div class="resp-tabs-container">
+					<h2>我们为您找到如下资源：</h2>
+				   <div class="tab-1" aria-labelledby="tab_item-0">
+						<ul class="tab_img">
+							{volist name="data" id="vo" empty="<h2>暂无资源</h2>"}
+							  <li>
+								  <a href="{:url('index/stock/check',['id'=>$vo.id])}">
+									 <img src="{$vo.icon}" class="img-responsive" alt="" />
+									 <div class="tab_desc">
+										<p>{$vo.title}</p>
+										<h4>积分：{$vo.inte} 分</h4>
+									 </div>
+								  </a>
+							  </li>
+							{/volist}
+						   <div class="clearfix"></div>
+						</ul>
+					   {$data->render()}
+				   </div>		        					 	        					 
+			  </div>
+           </div>
+       </div>
+       <div class="clearfix"> </div>
+    </div>
+	{include file="public/nav" /}
+
+	{include file="public/footer" /}
+</body>
+</html>		

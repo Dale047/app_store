@@ -1,0 +1,31 @@
+
+{include file="public/head" /}
+</head>
+<body>
+	{include file="public/header" /}
+	<div class="single">
+		<div class="container">
+		   <div class="single_box1">
+			 <div class="col-sm-5 single_left">
+				<img src="{$data.icon}" class="img-responsive" alt="" width="200" height="200"/>
+			 </div>
+			 <div class="col-sm-7 col_6">
+				<h3>软件信息</h3>
+				 <p class="movie_option"><strong>软件名 : </strong>{$data.title}</p>
+				 <p class="movie_option"><strong>分类 : </strong>{$data.appId|getPNav}</p>
+				 <p class="movie_option"><strong>大小 : </strong>{$data.FileSize}</p>
+				 <p class="movie_option"><strong>所需积分 : </strong>{$data.inte}</p>
+				 <p class="movie_option"><strong>上传日期 : </strong>{$data.create_time}</p>
+				<a class="btn_3" href="{:url('index/stock/downloadFile',['id'=>$data.id])}">Download</a>
+			</div>
+			<div class="clearfix"> </div>
+			   <h3>软件介绍</h3>
+			   <p>{$data.beizhu}</p>
+		  </div>
+	    </div>
+	</div>
+
+	{include file="public/nav" /}
+	{include file="public/footer" /}
+</body>
+</html>		

@@ -1,0 +1,61 @@
+
+{include file="public/head" /}
+</head>
+<body>
+
+{include file="public/header" /}
+	<div class="register">
+	  <div class="container">
+	  	<div class="about_box">
+	  	  <div class="col-md-9 col_3">
+	  		<h2>个人信息</h2>
+			  <p>真实姓名：{$UserInfo.relname}</p>
+			  <p>用户名：{$UserInfo.username}</p>
+			  <p>联系方式：{$UserInfo.tel}</p>
+			  <p>QQ：{$UserInfo.qq}</p>
+			  <p>用户状态：{$UserInfo.status|LevelStatus}</p>
+			  <p>注册日期：{$UserInfo.create_time}</p>
+		  </div>
+			<div class="col-md-3 col_4">
+				<img src="__STATIC__/other/img/3.png" class="img-rounded" alt="" width="350px" height="230px"/>
+			</div>
+		  <div class="clearfix"> </div>
+			<div class="col-md-9 col_3">
+				<h2>交易记录</h2>
+				<p>当前用户余额：<mark>{$UserInfo.inte}</mark> &nbsp;积分</p>
+				<table class="table table-hover">
+					<tr>
+						<td>序号</td>
+						<td>用户</td>
+						<td>软件</td>
+						<td>操作积分</td>
+						<td>剩余积分</td>
+						<td>交易状态</td>
+						<td>交易日期</td>
+					</tr>
+					{volist name="downlist" id="vo" empty="暂无记录"}
+						<tr>
+							<td>{$i}</td>
+							<td>{$vo.username}</td>
+							<td>{$vo.appname}</td>
+							<td>{$vo.ninte}</td>
+							<td>{$vo.minte}</td>
+							<td>{$vo.status|LevelStatus}</td>
+							<td>{$vo.create_time}</td>
+						</tr>
+					{/volist}
+				</table>
+				{$downlist->render()}
+			</div>
+			<div class="col-md-3 col_4">
+				<img src="__STATIC__/other/img/4.png" class="img-rounded" alt="" width="350px" height="230px"/>
+			</div>
+			<div class="clearfix"> </div>
+		</div>
+	  </div>
+	</div>
+
+	{include file="public/nav" /}
+	{include file="public/footer" /}
+</body>
+</html>		

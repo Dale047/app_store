@@ -1,0 +1,71 @@
+
+<!--引入网站头部文件-->
+	{include file="public/head" /}
+
+</head>
+<body>
+<!--引入网站头部header文件-->
+	{include file="public/header" /}
+
+	<div class="banner">
+		<div class="container">
+			<div class="span_1_of_1">
+			    <h2>{$BannerTip.0.value}.</h2>
+			    <div class="search">
+			      <ul class="nav1">
+		            <li id="search">
+						<form action="{:url('index/stock/index')}" method="get">
+							<input type="text" id="search_text" placeholder="请在此处输入您的需要的软件" list="list" name="title" />
+								<datalist id="list">
+									<option></option>
+								</datalist>
+							<input type="submit" value="" id="search_button">
+						</form>
+					</li>
+					<li id="options">
+						<a href="#">资源分类</a>
+						<ul class="subnav">
+							{volist name="firstnav" id="vo"}
+								<li><a href="index.html#sorce">{$vo.title}</a></li>
+							{/volist}
+						</ul>
+					</li>
+	              </ul>
+	            </div>
+			</div>
+		</div>
+	</div>
+	<div class="grid_1">
+		<h3>资源导航</h3>
+	</div>
+
+
+{include file="public/nav" /}
+
+{include file="public/footer" /}
+
+<script>
+	$("#search_text").keyup(function () {
+		var art = $("#search_text").val();
+		$.ajax({
+			type:"GET",
+			url:"{:url('index/index/search')}",
+			data:{"search":art},
+			dataType:"json",
+			success:function (xml) {
+				xml=JSON.parse(xml);
+				console.log(xml);
+				var str = "";
+				$.each(xml.data,function (index,value) {
+					console.log(value.title);
+					str = str+"<option>"+value.title+"</option>>";
+                })
+				$("#list").html(str);
+            },error:function (xml) {
+				console.log(xml);
+            }
+		})
+    })
+</script>
+</body>
+</html>		
